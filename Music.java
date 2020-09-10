@@ -3,7 +3,7 @@ package com.polonez11212;
 import javax.sound.sampled.*;
 import java.io.File;
 
-public class Music {
+public class Music implements Runnable{
 
     Clip clip;
 
@@ -28,11 +28,19 @@ public class Music {
         clip.start();
     }
 
-    void loopMusic(int music){
-        clip.loop(music);
+    void loopMusic(){
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
     void stopMusic(){
         clip.stop();
         clip.close();
     }
+
+    @Override
+    public void run() {
+        setMusic(".//res/music/forestDay.wav");
+        startMusic();
+        loopMusic();
+    }
 }
+
