@@ -6,7 +6,7 @@ public class Casual {
 
 
     Slides slides;
-    Music music = new Music();
+    Thread musicThread = new Thread(new Music());
     Start start;
     Picture picture;
 
@@ -42,9 +42,7 @@ this.picture=slides.picture;
     }
          public void firstDay(){
         slides.currentSlide="firstDay";
-        music.setMusic(pv.musicDay);
-        music.loopMusic(99);
-        music.startMusic();
+        musicThread.start();
              new DeathTimer(this);
 
          slides.textPanel.setText("You had the accident in forrest.\nYou take all u got and go into adventure."+wuwtd);
